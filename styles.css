@@ -13,6 +13,11 @@
     padding: 0;
 }
 
+h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
 body{
     background-color: var(--lightGreen);
     color: #404467;
@@ -22,7 +27,7 @@ body{
     justify-content: center;
     padding: 32px;
     font-size: 20px;
-    
+    flex-direction: column;
 }
 
 section{
@@ -53,12 +58,20 @@ input{
     left: 0;
     pointer-events:none;
     opacity: 0;
+    input {
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 }
 
 p{
     display: flex;
     flex-wrap: wrap;
-    gap: 3px 8px
+    gap: 3px 8px;
+    word-wrap: break-word;
+    white-space: normal;
 }
 
 x-letter{
@@ -78,7 +91,8 @@ x-letter{
     }
 
     &.correct{
-        color:#fffaac
+        color:#fffaac;
+        animation: soft 1s infinite ease-in-out alternate;
     }
     
     &.incorrect{
@@ -86,6 +100,8 @@ x-letter{
     }
 
 }
+
+
 
 x-word{
     border: 1.5px solid transparent;
@@ -105,3 +121,59 @@ x-word{
     }
 }
 
+@keyframes soft {
+    0%, 25%{
+        opacity: 1;
+    }
+    100%{
+        opacity: .7;
+    }
+}
+
+#results {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#results h2 {
+    color: var(--darkBlue);
+    font-size: 24px;
+}
+
+#results p {
+    margin: 8px 0;
+}
+
+#results button {
+    padding: 10px 20px;
+    background-color: var(--grayBlue);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#results button:hover {
+    background-color: var(--darkBlue);
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.5;
+        word-wrap: break-word;
+    }
+
+    input {
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 10px;
+        margin-top: 20px;
+    }
+}
