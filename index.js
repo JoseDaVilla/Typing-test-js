@@ -2,7 +2,7 @@ const time_DOM = document.querySelector('time');
 const paragraph_DOM = document.querySelector('p');
 const input_DOM = document.querySelector('input');
 
-const INITIAL_TIME = 300
+const INITIAL_TIME = 10
 
 const TEXT = 'Typing tests are a great way to enhance your keyboard skills. By practicing regularly, you can increase your speed, accuracy, and overall efficiency. Keep challenging yourself and track your progress to see improvements over time.'
 
