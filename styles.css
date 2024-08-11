@@ -1,0 +1,107 @@
+:root{
+    color-scheme: light dark;
+    --darkBlue:#404467;
+    --grayBlue:#5c627a;
+    --grayGreen:#a3b6a2;
+    --lightGreen:#b2ccaf;
+    --yellow:#fffaac;
+    --red: #f36a58;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: var(--lightGreen);
+    color: #404467;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    font-size: 20px;
+    
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    max-width: 100dvh;
+    gap: 8px;
+}
+
+main{
+    padding: 20px;
+    display: flex;
+    background-color: #a3b6a2;
+    border-radius: 5px;
+    
+}
+
+time{
+    color:black;
+    font-weight: 900;
+    text-align: center;
+}
+
+input{
+    z-index: -999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events:none;
+    opacity: 0;
+}
+
+p{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px 8px
+}
+
+x-letter{
+    color: #5c627a;
+    position: relative;
+
+    &.active::before{
+        content: '|';
+        color:#404467;
+        position: absolute;
+        left: -65%;
+        animation: blink .6s infinite ease-in-out alternate;
+    }
+
+    &.active.is-last::before{
+        left: 65%;
+    }
+
+    &.correct{
+        color:#fffaac
+    }
+    
+    &.incorrect{
+        color: var(--red);
+    }
+
+}
+
+x-word{
+    border: 1.5px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+    &.underlined{
+        border-bottom-color: var(--red);
+    }
+    
+}
+
+@keyframes blink {
+    0%, 25%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
