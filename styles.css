@@ -1,11 +1,11 @@
 :root {
     color-scheme: light dark;
-    --midnightBlue: #3d423c;
+    --midnightBlue: #292e28;
     --slateBlue: #5c627a;
-    --sageGreen: ##3d423c;
+    --sageGreen: #3d423c;
     --mintGreen: #c8c9b5;
-    --sunYellow: rgb(47, 47, 47);
-    --coralRed: #e74c3c;
+    --sunYellow:#232323;
+    --coralRed: #6e758f;
 }
 
 * {
@@ -24,12 +24,14 @@
 
 
 header {
-    background-color: #f5f7bd;
+    background-color: var(--slateBlue);
     width: 100%;
     display: flex;
+    position: relative;
     justify-content: space-evenly;
     align-items: center;
-    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 h1 {
@@ -46,6 +48,7 @@ body {
     justify-content: center;
     font-size: 20px;
     flex-direction: column;
+    width: 100%;
 }
 
 section {
@@ -58,8 +61,9 @@ section {
 main {
     padding: 20px;
     display: flex;
-    background-color: var(--sageGreen);
     border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
 }
 
 time {
@@ -103,13 +107,12 @@ x-letter.active::before {
     color: var(--midnightBlue);
     position: absolute;
     left: -65%;
-    animation: blink .6s infinite ease-in-out alternate;
+    animation: blink 0.8s linear infinite;
 }
 
 x-letter.active.is-last::before {
     left: 65%;
 }
-
 x-letter.correct {
     color: var(--sunYellow);
     animation: soft 1s infinite ease-in-out alternate;
@@ -129,12 +132,12 @@ x-word.underlined {
 }
 
 @keyframes blink {
-
-    0%,
-    25% {
+    0% {
         opacity: 1;
     }
-
+    50% {
+        opacity: 0.5;
+    }
     100% {
         opacity: 0;
     }
