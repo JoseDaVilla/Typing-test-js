@@ -116,7 +116,6 @@ x-letter.active.is-last::before {
 }
 x-letter.correct {
     color: var(--sunYellow);
-    animation: soft 1s infinite ease-in-out alternate;
 }
 
 x-letter.incorrect {
