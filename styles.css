@@ -2,10 +2,10 @@
     color-scheme: light dark;
     --midnightBlue: #292e28;
     --slateBlue: #5c627a;
-    --sageGreen: #3d423c;
+    --sageGreen: ##3d423c;
     --mintGreen: #c8c9b5;
-    --sunYellow:#232323;
-    --coralRed: #6e758f;
+    --sunYellow: rgb(35, 35, 35);
+    --coralRed: #e74c3c;
 }
 
 * {
@@ -61,6 +61,7 @@ section {
 main {
     padding: 20px;
     display: flex;
+    background-color: var(--sageGreen);
     border-radius: 5px;
     flex-direction: column;
     align-items: center;
