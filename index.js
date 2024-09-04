@@ -1,8 +1,9 @@
 const time_DOM = document.querySelector('time');
 const paragraph_DOM = document.querySelector('p');
 const input_DOM = document.querySelector('input');
+const progressBar_DOM = document.getElementById('progress-bar'); // Nueva línea
 
-const INITIAL_TIME = 30;
+const INITIAL_TIME = 10; 
 const TEXT = 'Typing tests are a great way to enhance your keyboard skills. By practicing regularly, you can increase your speed, accuracy, and overall efficiency. Keep challenging yourself and track your progress to see improvements over time.';
 
 let words = [];
@@ -16,8 +17,12 @@ startEvents();
 function startGame() {
     words = TEXT.split(' ').slice(0, 35);
     current_time = INITIAL_TIME;
-    time_DOM.textContent = current_time;
-    timerStarted = false; // Resetear el indicador del temporizador
+    time_DOM.textContent = formatTime(current_time);
+    timerStarted = false; 
+
+    progressBar_DOM.style.width = '100%';
+    progressBar_DOM.classList.remove('warning');
+    progressBar_DOM.classList.remove('alert');
 
     paragraph_DOM.innerHTML = words.map((word, index) => {
         const letters = word.split('');
@@ -40,6 +45,7 @@ function startEvents() {
     input_DOM.addEventListener('keydown', onKeyDown);
     input_DOM.addEventListener('keyup', onKeyUp);
 }
+
 
 function onKeyDown(event) {
     const currentWord_DOM = paragraph_DOM.querySelector('x-word.active');
@@ -97,11 +103,27 @@ function onKeyUp() {
         timerStarted = true;
         intervalTime = setInterval(() => {
             current_time--;
-            time_DOM.textContent = current_time;
+            time_DOM.textContent = formatTime(current_time);
 
-            if (current_time == 0) {
+
+            const elapsed_time = INITIAL_TIME - current_time;
+            const progressPercentage = (elapsed_time / INITIAL_TIME) * 100;
+            progressBar_DOM.style.width = `${100 - progressPercentage}%`;
+
+            if (current_time <= (INITIAL_TIME * 0.5)) {
+                progressBar_DOM.classList.add('warning');
+            }
+
+            if (current_time <= (INITIAL_TIME * 0.2)) {
+                progressBar_DOM.classList.remove('warning');
+                progressBar_DOM.classList.add('alert');
+            }
+
+            if (current_time <= 0 && progressBar_DOM.style.width == "0%") {
                 clearInterval(intervalTime);
-                gameOver();
+                setTimeout(() => {
+                    gameOver();
+                }, 1000);
             }
         }, 1000);
     }
@@ -131,12 +153,15 @@ function onKeyUp() {
 
     if (nextActiveLetter_DOM) {
         nextActiveLetter_DOM.classList.add('active');
+        currentLetter_DOM.style.transform = `translateX(${inputLength * 100}%);`; // Mover el cursor
     } else {
         currentLetter_DOM.classList.add('active', 'is-last');
+        currentLetter_DOM.style.transform = `translateX(100%);`; // Mover el cursor al final
     }
 }
 
 function gameOver() {
+    clearInterval(intervalTime); // Asegurarse de que el intervalo se detenga
     input_DOM.disabled = true;
     input_DOM.removeEventListener('keydown', onKeyDown);
     input_DOM.removeEventListener('keyup', onKeyUp);
@@ -169,4 +194,10 @@ function gameOver() {
         startGame();
         startEvents();
     });
+}
+
+function formatTime(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
