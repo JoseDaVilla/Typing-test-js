@@ -170,7 +170,7 @@
         margin: 8px 0;
     }
 
-    #results button {
+    button {
         padding: 10px 20px;
         background-color: var(--results_button);
         color: #fff;
@@ -180,7 +180,7 @@
         transition: background-color 0.3s;
     }
 
-    #results button:hover {
+    button:hover {
         background-color: var(--results_button_hover);
     }
 
@@ -228,4 +228,74 @@
 .progress-bar.alert {
     background-color: rgb(255, 81, 81);
     animation: blink 1s infinite alternate;
+}
+
+#initial-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#initial-screen form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#game-screen {
+    display: none;
+}
+
+/* Estilos para los inputs de tipo radio */
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label {
+    padding: 10px 20px;
+    background-color: var(--results_button);
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    text-align: center;
+    font-weight: bold;
+}
+/* Estilos para los inputs de tipo radio */
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"] + label {
+    padding: 10px 30px;
+    background-color: var(--results_button);
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Estilo cuando se selecciona el botón */
+input[type="radio"]:checked + label {
+    background-color: var(--results_button_hover);
+    border-color: var(--results_button_hover);
+}
+
+/* Estilo al pasar el cursor por el botón */
+input[type="radio"] + label:hover {
+    background-color: var(--results_button_hover);
+}
+
+/* Alineación de los inputs */
+.radio-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding: 20px;
 }
