@@ -248,7 +248,6 @@
     display: none;
 }
 
-/* Estilos para los inputs de tipo radio */
 input[type="radio"] {
     display: none;
 }
@@ -264,9 +263,13 @@ input[type="radio"] + label {
     text-align: center;
     font-weight: bold;
 }
-/* Estilos para los inputs de tipo radio */
+
 input[type="radio"] {
     display: none;
+}
+
+input[type="radio"]:checked + label:active {
+    transform: scale(0.95);
 }
 
 input[type="radio"] + label {
