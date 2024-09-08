@@ -7,6 +7,10 @@ const form = document.getElementById('settings-form');
 const initialScreen = document.getElementById('initial-screen');
 const gameScreen = document.getElementById('game-screen');
 
+const themeToggle = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
+const body = document.body;
+
 let INITIAL_TIME = 30;
 let difficulty = 'easy';
 let TEXTS = {
@@ -22,6 +26,23 @@ let words = [];
 let current_time = INITIAL_TIME;
 let timerStarted = false;
 let intervalTime;
+
+
+
+document.getElementById('theme-toggle').addEventListener('click', function() {
+    const body = document.body;
+    const themeIcon = document.getElementById('theme-toggle-icon');
+    
+    // Alternar la clase 'dark-theme'
+    body.classList.toggle('dark-theme');
+    
+    // Cambiar el ícono dependiendo del tema
+    if (body.classList.contains('dark-theme')) {
+        themeIcon.textContent = 'dark_mode';
+    } else {
+        themeIcon.textContent = 'light_mode';
+    }
+});
 
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -48,6 +69,7 @@ function startGame() {
     progressBar_DOM.style.width = '100%';
     progressBar_DOM.classList.remove('warning');
     progressBar_DOM.classList.remove('alert');
+    gameScreen.style.display = 'block';
 
     paragraph_DOM.innerHTML = words.map((word, index) => {
         const letters = word.split('');
@@ -187,7 +209,7 @@ function onKeyUp() {
 }
 
 function gameOver() {
-    clearInterval(intervalTime); // Asegurarse de que el intervalo se detenga
+    clearInterval(intervalTime); 
     input_DOM.disabled = true;
     input_DOM.removeEventListener('keydown', onKeyDown);
     input_DOM.removeEventListener('keyup', onKeyUp);
@@ -201,7 +223,7 @@ function gameOver() {
         .length;
     const correctLetters = paragraph_DOM.querySelectorAll('x-letter.correct').length;
     const accuracy = Math.round((correctLetters / totalLettersTyped) * 100);
-
+    gameScreen.style.display = 'none';
     const results_DOM = document.getElementById('results');
     results_DOM.innerHTML = `
         <h2>Game Over</h2>

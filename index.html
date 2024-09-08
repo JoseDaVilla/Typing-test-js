@@ -7,17 +7,24 @@
     <link rel="stylesheet" href="styles.css">
     <title>Typing Test - Improve and Test Your Typing Skills!</title>
     <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
+
 
 <body>
     <header>
         <h1>Typing Test | Improve and Test Your Typing Skills!</h1>
     </header>
 
+    <button id="theme-toggle" aria-label="Toggle Dark Mode">
+        <span id="theme-toggle-icon" class="material-symbols-outlined">light_mode</span>
+    </button>
+
     <main id="initial-screen">
         <h2>Select Time and Difficulty</h2>
         <form id="settings-form">
-            <!-- Campo para seleccionar el tiempo -->
+
             <fieldset>
                 <legend>Select Time:</legend>
                 <div class="radio-group">
@@ -32,7 +39,7 @@
                 </div>
             </fieldset>
             
-            <!-- Campo para seleccionar la dificultad -->
+
             <fieldset>
                 <legend>Select Difficulty:</legend>
                 <div class="radio-group">
@@ -47,7 +54,7 @@
                 </div>
             </fieldset>
         
-            <button type="submit">Start Game</button>
+            <button type="submit">Start</button>
         </form>
     </main>
 
@@ -61,9 +68,9 @@
             <p></p>
             <input id="input-game" type="text" autofocus>
         </section>
-        <section id="results"></section>
+        
     </main>
-
+    <section id="results"></section>
     <script src="index.js"></script>
 </body>
 

@@ -1,21 +1,40 @@
-    :root {
-        color-scheme: light dark;
-        --main_background: #fffaeb;
-        --header_letters: #20130a;
-        --main_letters:#20130ab1;
-        --incorrect_words:#ff7752; 
-        --correct_words:#20130a;
-        --results:#20130a;
-        --results_button:#5e405b;
-        --results_button_hover:#7d5f7a;
+:root {
+    --main_background: #fffaeb;
+    --header_letters: #20130a;
+    --main_letters:#20130ab1;
+    --incorrect_words:#ff7752; 
+    --correct_words:#20130a;
+    --results:#20130a;
+    --results_button:#5e405b;
+    --results_button_hover:#7d5f7a;
+    --progress_bar: rgb(187, 242, 162);
+    --progress_warning: rgb(255, 223, 135);
+    --progress_alert: rgb(255, 81, 81);
+}
 
-    }
+body.dark-theme {
+    --main_background: #121212;
+    --header_letters: #fffaeb;
+    --main_letters: #e0e0e0;
+    --incorrect_words: #ff7752;
+    --correct_words: #91a9ff;
+    --results: #fffaeb;
+    --results_button: #3e2c41;
+    --results_button_hover: #5c4761;
+    --progress_bar: rgb(107, 205, 129);
+    --progress_warning: rgb(255, 179, 71);
+    --progress_alert: rgb(255, 51, 51);
+}
 
     * {
         margin: 0;
         padding: 0;
     }
 
+    body {
+        background-color: var(--main_background);
+        color: var(--main_letters);
+    }
 
 
     .material-symbols-outlined {
@@ -167,6 +186,7 @@
     }
 
     #results p {
+        color: var(--results);
         margin: 8px 0;
     }
 
@@ -284,21 +304,32 @@ input[type="radio"] + label {
     font-weight: bold;
 }
 
-/* Estilo cuando se selecciona el botón */
 input[type="radio"]:checked + label {
     background-color: var(--results_button_hover);
     border-color: var(--results_button_hover);
 }
 
-/* Estilo al pasar el cursor por el botón */
 input[type="radio"] + label:hover {
     background-color: var(--results_button_hover);
 }
 
-/* Alineación de los inputs */
 .radio-group {
     display: flex;
     gap: 10px;
     justify-content: center;
     padding: 20px;
+}
+
+#theme-toggle {
+    cursor: pointer;
+    font-size: 36px;
+    transition: color 0.3s ease;
+}
+
+body.dark-theme #theme-toggle {
+    color: #fffaeb;
+}
+
+#theme-toggle:hover {
+    color: var(--results_button_hover);
 }
